@@ -1,0 +1,14 @@
+.leftsideitems div:hover{
+    background-color: grey;
+}
+
+.leftsideitems {
+    cursor: pointer;
+}
+
+span  {
+    font-family: "Segoe UI",Arial,sans-serif;
+    text-decoration: none;
+    display: block;
+    padding: 2px 1px 1px 16px;
+}

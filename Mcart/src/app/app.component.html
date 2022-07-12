@@ -1,0 +1,35 @@
+<!-- <h3>
+    {{fileName}} - Works!
+</h3> -->
+<!-- <div class="container  text-center mt-5 mb-5 border">
+        <h1>Bootstrap 5 is working fine with Angular 13!!</h1>
+      </div> -->
+
+     
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Mcart</a>
+      
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onNavClick(1)" >Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onNavClick(2)">User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="onNavClick(3)">Practice</a>
+          </li>  
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div [ngSwitch]="selectedNavId">
+    <app-login-admin *ngSwitchCase="1" ></app-login-admin>
+    <app-login-user *ngSwitchCase="2" ></app-login-user>
+    <app-practice *ngSwitchCase="3" ></app-practice>
+    <app-login-admin *ngSwitchDefault ></app-login-admin>
+
+</div>

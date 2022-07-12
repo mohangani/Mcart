@@ -1,0 +1,18 @@
+.leftsideitems li:hover{
+    background-color: gray;
+}
+
+.leftsideitems {
+    cursor: pointer;
+} 
+
+.selected {
+    background-color: cornflowerblue;
+}
+
+/* li  {
+    font-family: "Segoe UI",Arial,sans-serif;
+    text-decoration: none;
+    display: block;
+    padding: 2px 1px 1px 16px;
+} */
