@@ -3,24 +3,28 @@
         <div>Product List </div>
     </div>
     <div class="col-md-3 icons">
-        <span class="bi bi-bag-plus-fill icon" (click)="onAddClick();"></span>
+        <span class="bi bi-bag-plus-fill icon" routerLink="product"></span>
         <span class="bi bi-pen-fill icon" (click)="onEditClick();"></span>
-        <span class="bi bi-bag-x-fill icon"></span>
+        <span class="bi bi-bag-x-fill icon" (click)="onDeleteClick()"></span>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-3">
         <ul class="list-group bg-light text-center leftsideitems">
-            <li #product{{product.id}} class="list-group-item"  [ngStyle]="{'background-color': prd?.id == product.id ? 'cornflowerblue':'transparent'}" 
-            *ngFor="let product of products" (click)="onSelect(product)" >
-               {{product.id}}:{{product.name}}
+            <li #product{{product.id}} class="list-group-item"
+                [ngStyle]="{'background-color': prd?.id == product.id ? 'cornflowerblue':'transparent'}"
+                *ngFor="let product of products" (click)="onSelect(product)">
+                {{product.id}}:{{product.name}}
             </li>
         </ul>
     </div>
-
-    <div class="col-md-9" *ngIf="selectedProduct?.id != undefined">
-        <app-product [product]="selectedProduct" (updatedProp)="updatedProp($event)" ></app-product>
+    <div class="col-md-9">
+        <router-outlet></router-outlet>
     </div>
-    <p #details>  </p>
-</div>  
+    <!-- <div class="col-md-9" *ngIf="selectedProduct?.id != undefined">
+         <app-product [product]="selectedProduct" (updatedProp)="updatedProp($event)" ></app-product> 
+        
+    </div> -->
+    <p #details> </p>
+</div>

@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/models/productModel';
 import { ProductComponent } from '../product/product.component';
+import { productService } from '../Services/products.services';
 
 @Component({
   selector: 'app-product-list',
@@ -10,32 +12,28 @@ import { ProductComponent } from '../product/product.component';
 export class ProductListComponent implements OnInit {
 
   public prd: Product;//= { id: 111111, name: "TV" };
-  public products: Product[] = [
-    { id: 1, name: "TV" },
-    { id: 2, name: "TV2" },
-    { id: 3, name: "TV3" },
-    { id: 4, name: "TV4" },
-  ];
+  public products: Product[];
   public selectedProduct: Product = {} as Product;
   public prodid: number;
   public isaddmode: boolean = true;
   @ViewChild('details', { static: true }) details: ElementRef<HTMLElement>;
   @ViewChild(ProductComponent) prodcomp: ProductComponent;
 
-
-
-  constructor() { }
+  constructor(private productservice: productService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.products = this.productservice.getProducts();
   }
 
-
-
   onSelect(product: Product) {
+    //productdetail
+    this.router.navigate(['productdetail', product.id], { relativeTo: this.activeRoute });
+
+
+
     this.prd = product;
-    debugger;
-    this.details.nativeElement.innerHTML = product.name;
-    this.details.nativeElement.style.color = 'red';
+    // this.details.nativeElement.innerHTML = product.name;
+    // this.details.nativeElement.style.color = 'red';
   }
 
   async onAddClick() {
@@ -48,9 +46,28 @@ export class ProductListComponent implements OnInit {
   }
 
   async onEditClick() {
-    this.isaddmode = false;
-    Object.assign(this.selectedProduct, this.prd);
-      this.prodcomp.title = `Edit ${this.prd.name} Product Details :`;
+
+    if (this.prd == undefined) {
+      alert("Please Select the Product.");
+      return;
+    }
+
+    this.router.navigate(['product', this.prd.id], { relativeTo: this.activeRoute });
+
+    // this.isaddmode = false;
+    // Object.assign(this.selectedProduct, this.prd);
+    //   this.prodcomp.title = `Edit ${this.prd.name} Product Details :`;
+  }
+
+  async onDeleteClick() {
+    if (this.prd == undefined) {
+      alert("Please Select the Product to Delete.");
+      return;
+    }
+    this.productservice.removeProduct(this.prd);
+
+    //this.products.splice(this.products.indexOf(this.prd),1);
+
   }
 
 

@@ -9,6 +9,9 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { PracticeComponent } from './practice/practice.component';
 import { LeftSideItem } from './leftsideItem.directive';
+import { AppRoutingModule } from './routing.module';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { LeftSideItem } from './leftsideItem.directive';
     ProductListComponent,
     ProductComponent,
     PracticeComponent,
-    LeftSideItem
+    LeftSideItem,
+    NotfoundComponent,
+    ProductdetailsComponent
     
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/models/productModel';
+import { productService } from '../Services/products.services';
 
 @Component({
   selector: 'app-product',
@@ -9,19 +10,39 @@ import { Product } from 'src/models/productModel';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() public product :Product;
-  @Output() public updatedProp  = new EventEmitter<Product>();
+  product: Product = {} as Product;
+  @Output() public updatedProp = new EventEmitter<Product>();
 
-  public title:string = "";
-  constructor() { }
+  public title: string = "";
+
+  constructor(private activatedRoute: ActivatedRoute, private productservice: productService) { }
 
   ngOnInit(): void {
+
+    this.activatedRoute.params.subscribe((params: Params) => { this.getProdDetails(params['id']) });
   }
 
-  onSubmit(){
-    this.updatedProp.emit(this.product);
+  getParams(params: Params) {
+    //this.product = this.productservice.getProductById(+params['id']);
+    this.getProdDetails(+params['id']);
   }
 
+  getProdDetails(id) {
+    if (id != undefined)
+      this.product = this.productservice.getProductById(+id);
+  }
+
+
+
+  onSubmit() {
+
+    if (this.product.id != undefined)
+      this.productservice.updateproduct(this.product);
+    else
+      this.productservice.addProduct(this.product);
+
+    //this.updatedProp.emit(this.product);
+  }
 
 
 }
