@@ -3,7 +3,7 @@
         <div>Product List </div>
     </div>
     <div class="col-md-3 icons">
-        <span class="bi bi-bag-plus-fill icon" routerLink="product"></span>
+        <span class="bi bi-bag-plus-fill icon" routerLink="product" [queryParams]="{Name:'Mohan'}" fragment="$"></span>
         <span class="bi bi-pen-fill icon" (click)="onEditClick();"></span>
         <span class="bi bi-bag-x-fill icon" (click)="onDeleteClick()"></span>
     </div>

@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Product } from 'src/models/productModel';
 import { ProductComponent } from '../product/product.component';
 import { productService } from '../Services/products.services';
@@ -9,7 +10,7 @@ import { productService } from '../Services/products.services';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   public prd: Product;//= { id: 111111, name: "TV" };
   public products: Product[];
@@ -18,16 +19,18 @@ export class ProductListComponent implements OnInit {
   public isaddmode: boolean = true;
   @ViewChild('details', { static: true }) details: ElementRef<HTMLElement>;
   @ViewChild(ProductComponent) prodcomp: ProductComponent;
+  productObservable: Subscription;
 
   constructor(private productservice: productService, private router: Router, private activeRoute: ActivatedRoute) { }
 
+
   ngOnInit(): void {
-    this.products = this.productservice.getProducts();
+    this.productObservable =  this.productservice.getProducts().subscribe(data=>this.products=data);
   }
 
   onSelect(product: Product) {
     //productdetail
-    this.router.navigate(['productdetail', product.id], { relativeTo: this.activeRoute });
+    this.router.navigate(['productdetail', product.id], { queryParams:{productName:product.name,productId:product.id},fragment: Math.random() < 0.5 ?"@":"-",relativeTo: this.activeRoute });
 
 
 
@@ -79,6 +82,10 @@ export class ProductListComponent implements OnInit {
     }
     this.selectedProduct = {} as Product;
     console.log(updatedProduct);
+  }
+
+  ngOnDestroy():void{
+    this.productObservable.unsubscribe();
   }
 
 

@@ -12,6 +12,7 @@ import { LeftSideItem } from './leftsideItem.directive';
 import { AppRoutingModule } from './routing.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { AppResolverService } from './Services/app-resolver.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AppResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
