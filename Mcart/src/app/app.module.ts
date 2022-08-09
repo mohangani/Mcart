@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { AppRoutingModule } from './routing.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { AppResolverService } from './Services/app-resolver.service';
+import { UserComponent } from './users/user/user.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,16 @@ import { AppResolverService } from './Services/app-resolver.service';
     PracticeComponent,
     LeftSideItem,
     NotfoundComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    UserComponent,
+    UserListComponent
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [AppResolverService],
   bootstrap: [AppComponent]

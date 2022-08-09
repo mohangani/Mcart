@@ -1,0 +1,109 @@
+<div class="container">
+
+    <h4 style="text-align: center;"> Add User Details</h4>
+
+
+    <form [formGroup]="userForm" action="/action_page.php" (ngSubmit)="onSubmit()">
+
+        <div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label for="">First Name:</label>
+                        <input class="form-control" type="text" formControlName="firstName" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('firstName').touched  && !userForm.get('firstName').valid">
+                            First Name is required.
+                        </small>
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="">Last Name:</label>
+                        <input class="form-control" type="text" [formControlName]="'lastName'" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('lastName').touched  && !userForm.get('lastName').valid">
+                            Last Name is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label for="">DOB:</label>
+                        <input class="form-control" type="date" [formControlName]="'dob'" />
+                        <small class="text-danger" *ngIf="userForm.get('dob').touched  && !userForm.get('dob').valid">
+                            DOB is required.
+                        </small>
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="">Gender:</label> <br>
+
+                        <input type="radio" id="male" name="gender" value="male" [formControlName]="'gender'">
+                          <label for="male">Male</label> &nbsp;
+
+                        <input type="radio" id="female" name="gender" value="female" [formControlName]="'gender'">
+                          <label for="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label for="">Email:</label>
+                        <input class="form-control" type="email" [formControlName]="'email'" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('email').touched  && !userForm.get('email').valid && userForm.get('email').errors?.['required']">
+                            Email is required.
+                        </small>
+                        <small class="text-danger"
+                            *ngIf="userForm.get('email').touched  && !userForm.get('email').valid
+                            && userForm.get('email').errors?.['email']">
+                            Please Enter valid Email.
+                        </small>
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="">Phone</label>
+                        <input class="form-control" type="text" [formControlName]="'phone'" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('phone').touched  && !userForm.get('phone').valid">
+                            Phone is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <label for="">Full Address:</label>
+                        <textarea class="form-control" name="" id="" cols="50" rows="3"
+                            [formControlName]="'address'"></textarea>
+                        <small class="text-danger"
+                            *ngIf="userForm.get('address').touched  && !userForm.get('address').valid">
+                            Address is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label for="">UserName:</label>
+                        <input class="form-control" type="email" [formControlName]="'userName'" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('userName').touched  && !userForm.get('userName').valid">
+                            User Name is required.
+                        </small>
+                    </div>
+                    <div class="col-md-6 ">
+                        <label for="">Password</label>
+                        <input class="form-control" type="text" [formControlName]="'password'" />
+                        <small class="text-danger"
+                            *ngIf="userForm.get('password').touched  && !userForm.get('password').valid">
+                            Password is required.
+                        </small>
+                    </div>
+                </div>
+
+                <br />
+                <button class="btn btn-primary" type="submit" > Add User</button> 
+            </div>
+        </div>
+    </form>
+
+</div>

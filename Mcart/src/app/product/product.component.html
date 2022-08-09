@@ -1,7 +1,7 @@
 <div class="container">
     <h4 [ngStyle]="{'text-align': 'center'}"> {{title}} </h4>
 
-    <form>
+    <form (ngSubmit)="onSubmit();">
         <div class="mb-3 m-3">
             <!-- <label for="#id"> Product Id :</label>
             <input type="number" class="form-control" name="id" [(ngModel)]="product.id" disabled/> -->
@@ -11,7 +11,7 @@
         </div>
         <div class="mb-3 m-3">
 
-            <span class="btn btn-primary" (click)="onSubmit();"> Submit </span>
+            <button type="Submit" class="btn btn-primary" > Submit </button>
 
         </div>
     </form>
