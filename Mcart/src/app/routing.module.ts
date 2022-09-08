@@ -13,12 +13,14 @@ import { UserComponent } from "./users/user/user.component";
 
 const routes: Routes = [
     {
-        path: "admin", component: Admin, canActivateChild: [AuthGaurdService], canActivate: [AuthGaurdService], children: [{
-            path: "productlist", component: ProductListComponent, children: [
-                { path: "productdetail/:id", component: ProductdetailsComponent },
-                { path: "product", component: ProductComponent, canDeactivate: [AuthGaurdService] },
-                { path: "product/:id", component: ProductComponent, resolve: { "product": AppResolverService } },
-            ]
+        path: "admin", component: Admin, canActivateChild: [AuthGaurdService], canActivate: [AuthGaurdService], 
+            children: [{
+                path: "productlist", component: ProductListComponent, 
+                    children: [
+                        { path: "productdetail/:id", component: ProductdetailsComponent },
+                        { path: "product", component: ProductComponent, canDeactivate: [AuthGaurdService] },
+                        { path: "product/:id", component: ProductComponent, resolve: { "product": AppResolverService } },
+                ]
         },
         { path: "userlist", component: UserComponent }
         ]
