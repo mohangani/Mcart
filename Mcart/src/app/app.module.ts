@@ -16,6 +16,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { LogHttpRequestsInterceptor } from './interceptors/log-http-requests.interceptor';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LogHttpRequestsInterceptor } from './interceptors/log-http-requests.int
     NotfoundComponent,
     ProductdetailsComponent,
     UserComponent,
-    UserListComponent
+    UserListComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,

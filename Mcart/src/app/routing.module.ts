@@ -10,6 +10,7 @@ import { ProductComponent } from "./product/product.component";
 import { ProductdetailsComponent } from "./productdetails/productdetails.component";
 import { AppResolverService } from "./Services/app-resolver.service";
 import { UserComponent } from "./users/user/user.component";
+import { AuthenticationComponent } from "./authentication/authentication.component";
 
 const routes: Routes = [
     {
@@ -28,6 +29,7 @@ const routes: Routes = [
     { path: "user", component: User },
     { path: "product", component: ProductComponent },
     { path: "practice", component: PracticeComponent },
+    { path: "auth", component: AuthenticationComponent },
     { path: "", redirectTo: "/admin", pathMatch: 'full' },
     { path: "**", component: NotfoundComponent },
 
