@@ -12,9 +12,9 @@ public Get(url:string){
   return this.httpClient.get(url);
 }
 
-public Post(url:string,body:any){
+public Post<T>(url:string,body:any): Observable<T>{
 
-  return this.httpClient.post(url,body);
+  return this.httpClient.post<T>(url,body);
 
 }
 

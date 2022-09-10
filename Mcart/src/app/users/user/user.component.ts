@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
       password: new FormControl('', Validators.required),
     });
 
-    this.userForm.controls.phone.pending
+    //this.userForm.controls.phone.pending
   }
 
   onSubmit() {
