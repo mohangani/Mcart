@@ -31,7 +31,7 @@
                         <label for="">DOB:</label>
                         <input class="form-control" type="date" [formControlName]="'dob'" />
                         <small class="text-danger" *ngIf="userForm.get('dob').touched  && !userForm.get('dob').valid">
-                            DOB is required.
+                            {{this.userForm.get("dob").errors.error || "DOb is Required"}} 
                         </small>
                     </div>
                     <div class="col-md-6 ">
@@ -42,6 +42,10 @@
 
                         <input type="radio" id="female" name="gender" value="female" [formControlName]="'gender'">
                           <label for="female">Female</label>
+
+                        <small class="text-danger" *ngIf="userForm.get('gender').touched  && !userForm.get('gender').valid">
+                            {{this.userForm.get("gender").errors.error || "Gender is Required"}} 
+                        </small>
                     </div>
                 </div>
 
@@ -61,8 +65,8 @@
                     </div>
                     <div class="col-md-6 ">
                         <label for="">Phone</label>
-                        <input class="form-control" type="text" [formControlName]="'phone'" />
-                        <small class="text-danger"
+                        <input class="form-control" type="text"  mask='(000)000-0000'/>
+                        <small class="text-danger" 
                             *ngIf="userForm.get('phone').touched  && !userForm.get('phone').valid">
                             Phone is required.
                         </small>

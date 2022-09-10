@@ -12,9 +12,10 @@ import { LeftSideItem } from './leftsideItem.directive';
 import { AppRoutingModule } from './routing.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
-import { AppResolverService } from './Services/app-resolver.service';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import { LogHttpRequestsInterceptor } from './interceptors/log-http-requests.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,15 +30,15 @@ import { UserListComponent } from './users/user-list/user-list.component';
     ProductdetailsComponent,
     UserComponent,
     UserListComponent
-    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AppResolverService],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogHttpRequestsInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,13 +17,11 @@ export class ProductdetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private route: Router, private productservice: productService) { }
 
   ngOnInit(): void {
-
-
-    console.log(this.activatedRoute.snapshot.queryParams.productName);
-    console.log(this.activatedRoute.snapshot.queryParams.productId);
-    console.log(this.activatedRoute.snapshot.fragment);
+    console.log("ngOnInit"+this.activatedRoute.snapshot.queryParams.productName);
+    console.log("ngOnInit"+this.activatedRoute.snapshot.queryParams.productId);
+    console.log("ngOnInit"+this.activatedRoute.snapshot.fragment);
     this.activatedRoute.params.subscribe((params: Params) => {
-      console.log(params);
+      console.log("ngOnInit-sub"+params);
       this.getProdDetails(+params['id'])
     });
     this.activatedRoute.queryParams.subscribe((params: Params) => { console.log(params); });

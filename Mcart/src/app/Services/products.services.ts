@@ -43,14 +43,14 @@ export class productService {
             setTimeout(() => {
                 observer.next(this.products);
                 observer.complete();
-            }, 3000);
+            }, 5);
 
         })
         //return this.products;
     }
 
     getProductById(id: number): Observable<Product> {
-        return of(this.products.find((x => x.id == id))).pipe(delay(2000), map(
+        return of(this.products.find((x => x.id == id))).pipe(delay(10), map(
             (product) => {
                 // if (product.id == 3) { 
                 //     throw new Error("its product id :3") 

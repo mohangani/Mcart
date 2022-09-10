@@ -8,9 +8,11 @@ export class ValidationService {
 
   constructor() { }
 
-  public validateDob(control: AbstractControl): ValidationErrors|null {
+  public validateDob(control: AbstractControl){
     if (new Date(control.value) > new Date())
-      return {error:"DOB should be less than or eual to current date."};
+      return {
+        invalidDob:true,
+        error:"DOB should be less than or eual to current date."};
     return null;
   }
 

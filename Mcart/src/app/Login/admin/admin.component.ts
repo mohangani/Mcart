@@ -15,13 +15,16 @@ export class Admin {
     public test: { name: string, age: number } = { name: "mohan", age: 27 };
     public menuItemId: Number;
     constructor() {
-        for (let i = 0; i < 50; i++) {
-            Math.random() > 0.5 ? this.menus.push({ name: "Product", id: 1 }) :
-                this.menus.push({ name: "Users", id: 2 });
-        }
+        //for (let i = 0; i < 50; i++) {
+        //     Math.random() > 0.5 ? this.menus.push({ name: "Product", id: 1 }) :
+        //         this.menus.push({ name: "Users", id: 2 });
+        // }
+
+        this.menus.push({ name: "Product", id: 1 });
+        this.menus.push({ name: "Users", id: 2 });
     }
 
-    public onMenuSelect(menu:Menu) {
+    public onMenuSelect(menu: Menu) {
         this.menuItemId = menu.id;
 
     }

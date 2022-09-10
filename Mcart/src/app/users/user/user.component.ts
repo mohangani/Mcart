@@ -22,20 +22,19 @@ export class UserComponent implements OnInit {
       dob: new FormControl('', [Validators.required, this.validationService.validateDob]),
       gender: new FormControl('male', Validators.required),
       email: new FormControl('', [Validators.email, Validators.required]),
-      phone: new FormControl('', Validators.required),
+      phone: new FormControl('', [Validators.required]),//,Validators.maxLength(13), Validators.pattern("[0-9]")
       address: new FormControl('', Validators.required),
       userName: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
+
+    this.userForm.controls.phone.pending
   }
-
-
-
 
   onSubmit() {
     console.log(this.userForm);
     console.log(this.userForm.value);
-
+    if(!this.userForm.valid) return;
     alert("Submited!");
     this.userForm.reset();
   }

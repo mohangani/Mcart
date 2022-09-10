@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid" style="height: 905px;">
 
-    <div class="row g-0">
+    <div class="row g-0" style="height: 100%;">
 
         <div class="col-sm-2 border bg-light text-center leftsideitems">
             <div *ngFor="let menuItem  of menus"   [routerLink]="[menuItem.id===1?'productlist':'userlist']"    (click)="onMenuSelect(menuItem)">
