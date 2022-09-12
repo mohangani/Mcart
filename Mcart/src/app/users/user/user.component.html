@@ -31,20 +31,27 @@
                         <label for="">DOB:</label>
                         <input class="form-control" type="date" [formControlName]="'dob'" />
                         <small class="text-danger" *ngIf="userForm.get('dob').touched  && !userForm.get('dob').valid">
-                            {{this.userForm.get("dob").errors.error || "DOb is Required"}} 
+                            {{this.userForm.get("dob").errors.error || "DOb is Required"}}
                         </small>
                     </div>
                     <div class="col-md-6 ">
                         <label for="">Gender:</label> <br>
+                        <select type="number" name="gender" id="gender" class="form-control" formControlName="gender">
+                            <option type="number" [ngValue]=0>Select</option>
+                            <option type="number" [ngValue]=1>Male</option>
+                            <option type="number" [ngValue]=2>Female</option>
+                        </select>
 
-                        <input type="radio" id="male" name="gender" value="male" [formControlName]="'gender'">
+                        <!-- 
+                        <input type="radio" id="male" name="gender" value=1 [formControlName]="'gender'">
                           <label for="male">Male</label> &nbsp;
 
-                        <input type="radio" id="female" name="gender" value="female" [formControlName]="'gender'">
-                          <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value=2 [formControlName]="'gender'">
+                          <label for="female">Female</label> -->
 
-                        <small class="text-danger" *ngIf="userForm.get('gender').touched  && !userForm.get('gender').valid">
-                            {{this.userForm.get("gender").errors.error || "Gender is Required"}} 
+                        <small class="text-danger"
+                            *ngIf="userForm.get('gender').touched  && !userForm.get('gender').valid">
+                            {{this.userForm.get("gender").errors.error || "Gender is Required"}}
                         </small>
                     </div>
                 </div>
@@ -57,31 +64,48 @@
                             *ngIf="userForm.get('email').touched  && !userForm.get('email').valid && userForm.get('email').errors?.['required']">
                             Email is required.
                         </small>
-                        <small class="text-danger"
-                            *ngIf="userForm.get('email').touched  && !userForm.get('email').valid
+                        <small class="text-danger" *ngIf="userForm.get('email').touched  && !userForm.get('email').valid
                             && userForm.get('email').errors?.['email']">
                             Please Enter valid Email.
                         </small>
                     </div>
                     <div class="col-md-6 ">
                         <label for="">Phone</label>
-                        <input class="form-control" type="text"  mask='(000)000-0000'/>
-                        <small class="text-danger" 
+                        <input class="form-control" type="text" formControlName="phone" mask='(000)000-0000' />
+                        <small class="text-danger"
                             *ngIf="userForm.get('phone').touched  && !userForm.get('phone').valid">
                             Phone is required.
                         </small>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <label for="">Full Address:</label>
-                        <textarea class="form-control" name="" id="" cols="50" rows="3"
-                            [formControlName]="'address'"></textarea>
+                <h5>Address:</h5>
+                <div class="row" formGroupName="address"
+                    style="background-color: lightgray; padding-bottom: 20px !important;">
+                    <div class="col-md-4">
+                        <label for="street">Street</label>
+                        <input type="text" id="street" class="form-control" formControlName='street' />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" formControlName='city' />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="pincode">Pincode</label>
+                        <input type="text" id="pincode" class="form-control" formControlName='pincode' />
                         <small class="text-danger"
-                            *ngIf="userForm.get('address').touched  && !userForm.get('address').valid">
-                            Address is required.
-                        </small>
+                            *ngIf="userForm.get(['address','pincode']).touched  && !userForm.get(['address','pincode']).valid && userForm.get(['address','pincode']).value">
+                            pincode Invalid </small>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label for="State">State</label>
+                        <input type="text" id="State" class="form-control" formControlName='state' />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" class="form-control" formControlName='country' />
                     </div>
                 </div>
 
@@ -104,8 +128,20 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">Role</label>
+                        <select type="number" name="Role" id="role" class="form-control" formControlName="roleId">
+                            <option type="number" [ngValue]=1>Admin</option>
+                            <option type="number" [ngValue]=2>User</option>
+                            <option type="number" [ngValue]=3>Guest</option>
+                        </select>
+
+                    </div>
+                </div>
+
                 <br />
-                <button class="btn btn-primary" type="submit" > Add User</button> 
+                <button class="btn btn-primary" type="submit"> Add User</button>
             </div>
         </div>
     </form>

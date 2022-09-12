@@ -9,19 +9,13 @@ export class AuthGaurdService implements CanActivate, CanActivateChild, CanDeact
 
   constructor(private loginService:LoginService,private router:Router) { }
 
-
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
-     if(!this.loginService.authorised){
-      return this.router.parseUrl('/auth');
-     };
-     
-     return true;
-
+     return this.validate();
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.loginService.authorised;
+    return this.validate();
 
   }
 
@@ -30,6 +24,14 @@ export class AuthGaurdService implements CanActivate, CanActivateChild, CanDeact
 
     return component.deactivate();
 
+  }
+
+  private validate(){
+    if(!this.loginService.isAuthorisedUser()){
+      return this.router.parseUrl('/auth');
+     };
+     
+     return true;
   }
 
 }

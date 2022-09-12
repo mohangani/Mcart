@@ -14,9 +14,16 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { LogHttpRequestsInterceptor } from './interceptors/log-http-requests.interceptor';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { authInterceptor } from './interceptors/authInterceptor';
+
+
+const interceptorsList = [
+  { provide: HTTP_INTERCEPTORS, useClass: LogHttpRequestsInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: authInterceptor, multi: true },
+]
 
 @NgModule({
   declarations: [
@@ -40,7 +47,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LogHttpRequestsInterceptor, multi: true },],
+  providers: [interceptorsList],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

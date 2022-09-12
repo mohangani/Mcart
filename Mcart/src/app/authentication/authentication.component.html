@@ -6,7 +6,7 @@
                 <input type="text" id="username" class="form-control" [(ngModel)]="username">
             
                 <label for="psw">Password</label>
-                <input type="text" id="psw" class="form-control" [(ngModel)]="password">
+                <input type="text" id="psw" class="form-control" [(ngModel)]="password" (keyup.enter)="onSignin()">
                 <span *ngIf="isSubmited" for="psw" class="text-danger">Username or password Incorrect.</span>
 
                 <br>
