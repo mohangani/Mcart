@@ -1,30 +1,30 @@
 <div class="row g-0">
-    <div class="col-md-9 text-center align-content-center p-3 bs-gray-400">
-        <div>Product List </div>
-    </div>
-    <div class="col-md-3 icons">
-        <span class="bi bi-bag-plus-fill icon" routerLink="product" [queryParams]="{Name:'Mohan'}" fragment="$"></span>
-        <span class="bi bi-pen-fill icon" (click)="onEditClick();"></span>
-        <span class="bi bi-bag-x-fill icon" (click)="onDeleteClick()"></span>
-    </div>
+  <div class="col-md-9 text-center align-content-center p-3 bs-gray-400">
+    <div>Product List </div>
+  </div>
+  <div class="col-md-3 icons">
+    <span class="bi bi-bag-plus-fill icon" routerLink="product" [queryParams]="{Name:'Mohan'}" fragment="$"></span>
+    <span class="bi bi-pen-fill icon" (click)="onEditClick();"></span>
+    <span class="bi bi-bag-x-fill icon" (click)="onDeleteClick()"></span>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col-md-3">
-        <ul class="list-group bg-light text-center leftsideitems">
-            <li #product{{product.id}} class="list-group-item"
-                [ngStyle]="{'background-color': prd?.id == product.id ? 'cornflowerblue':'transparent'}"
-                *ngFor="let product of products" (click)="onSelect(product)">
-                {{product.id}}:{{product.name}}
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-9">
-        <router-outlet></router-outlet>
-    </div>
-    <!-- <div class="col-md-9" *ngIf="selectedProduct?.id != undefined">
-         <app-product [product]="selectedProduct" (updatedProp)="updatedProp($event)" ></app-product> 
-        
+  <div class="col-md-3">
+    <ul class="list-group bg-light text-center leftsideitems">
+      <li #product{{product.id}} class="list-group-item"
+        [ngStyle]="{'background-color': prd?.id == product.id ? 'cornflowerblue':'transparent'}"
+        *ngFor="let product of products" (click)="onSelect(product)">
+        {{product.id}}:{{product.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="col-md-9" *ngIf="selectedProduct?.id != undefined">
+         <app-product [product]="selectedProduct" (updatedProp)="updatedProp($event)" ></app-product>
+
     </div> -->
-    <p #details> </p>
+  <p #details> </p>
 </div>

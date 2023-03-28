@@ -1,1 +1,17 @@
-<p>user-list works!</p>
+<!-- [autoGroupColumnDef]="autoGroupColumnDef" -->
+
+<div class="row g-0">
+    <div class="col-md-9 text-center align-content-center p-3 bs-gray-400">
+        <div>Users List </div>
+    </div>
+    <div class="col-md-3 icons">
+        <span class="bi bi-bag-plus-fill icon" routerLink="adduser"></span>
+        <span class="bi bi-pen-fill icon" (click)="onEditClick();"></span>
+        <span class="bi bi-bag-x-fill icon" (click)="onDeleteClick()"></span>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+<ag-grid-angular #grid rowSelection="multiple" class="ag-theme-alpine" [rowData]="usersList" [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef">
+</ag-grid-angular>

@@ -50,10 +50,10 @@ export class productService {
     }
 
     getProductById(id: number): Observable<Product> {
-        return of(this.products.find((x => x.id == id))).pipe(delay(10), map(
+        return of(this.products.find((x => x.id == id))).pipe(,delay(10), map(
             (product) => {
-                // if (product.id == 3) { 
-                //     throw new Error("its product id :3") 
+                // if (product.id == 3) {
+                //     throw new Error("its product id :3")
                 //     //return null;
                 // } else
                  return product;

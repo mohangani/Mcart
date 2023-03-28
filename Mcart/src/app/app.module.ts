@@ -18,7 +18,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { LogHttpRequestsInterceptor } from './interceptors/log-http-requests.interceptor';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { authInterceptor } from './interceptors/authInterceptor';
-
+import { AgGridModule } from 'ag-grid-angular';
+//import 'ag-grid-enterprise';
 
 const interceptorsList = [
   { provide: HTTP_INTERCEPTORS, useClass: LogHttpRequestsInterceptor, multi: true },
@@ -45,6 +46,7 @@ const interceptorsList = [
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    AgGridModule,
     HttpClientModule
   ],
   providers: [interceptorsList],

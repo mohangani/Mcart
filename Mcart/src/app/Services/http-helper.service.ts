@@ -8,8 +8,12 @@ import { Observable } from 'rxjs';
 export class HttpHelperService {
   constructor(private httpClient: HttpClient) { }
 
-public Get(url:string){
-  return this.httpClient.get(url);
+// public Get(url:string){
+//   return this.httpClient.get(url);
+// }
+
+public Get<T>(url:string):Observable<T>{
+  return this.httpClient.get<T>(url);
 }
 
 public Post<T>(url:string,body:any): Observable<T>{
